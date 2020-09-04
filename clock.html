@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ANALOG CLOCK</title>
+	<style>
+		.clock {
+			position: relative;
+			background-color: #eee;
+			height: 500px;
+			width: 500px;
+			border-radius: 50%;
+			border: 1px solid black;
+		}
+
+			.clock div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+			}
+
+			.clock div div {
+				left: 50%;
+			}
+
+			.clock span {
+				position: absolute;
+				background-color: black;
+				width: 5%;
+				height: 5%;
+				border-radius: 50%;
+			}
+
+				.clock span:nth-child(1) {
+					left: 50%;
+					top: 0;
+					transform: translateX(-50%);
+				}
+
+				.clock span:nth-child(2) {
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+				.clock span:nth-child(3) {
+					left: 100%;
+					top: 50%;
+					transform: translate(-100%, -50%);
+				}
+
+				.clock span:nth-child(4) {
+					left: 50%;
+					top: 100%;
+					transform: translate(-50%, -100%);
+				}
+
+		#div-hour div {
+			top: 20%;
+			height: 30%;
+			border-left: 2px solid black;
+			margin-left: -1px;
+		}
+
+		#div-minute div {
+			top: 10%;
+			height: 40%;
+			border-left: 2px solid black;
+			margin-left: -1px;
+		}
+
+		#div-second div {
+			top: 5%;
+			height: 45%;
+			border-left: 1px solid red;
+		}
+	</style>
+	<script>
+		function setClock() {
+			var time = new Date();
+			var hd = 360.0 * time.getHours() / 12 + 30.0 * time.getMinutes() / 60;
+			var md = 360.0 * time.getMinutes() / 60 + 6.0 * time.getSeconds() / 60;
+			var sd = 360.0 * time.getSeconds() / 60 + 6.0 * time.getMilliseconds() / 1000;
+			document.getElementById("div-hour").style.transform = "rotate(" + hd + "deg)";
+			document.getElementById("div-minute").style.transform = "rotate(" + md + "deg)";
+			document.getElementById("div-second").style.transform = "rotate(" + sd + "deg)";
+		}
+		window.onload = function () {
+			setClock();
+			setInterval(function () {
+				setClock();
+			}, 10);
+		};
+	</script>
+</head>
+<body>
+	<div class="clock">
+		<span>12</span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<div id="div-hour"><div></div></div>
+		<div id="div-minute"><div></div></div>
+		<div id="div-second"><div></div></div>
+	</div>
+</body>
+</html>
