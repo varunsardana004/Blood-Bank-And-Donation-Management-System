@@ -54,6 +54,7 @@
     display: block;
     text-align: left;
   }
+  
   .header-right {
     float: none;
   }
