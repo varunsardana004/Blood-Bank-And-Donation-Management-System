@@ -15,7 +15,9 @@
 
 <?php include('head.php') ?>
 
-<div class="container" style="margin-top:30px">
+<div id="page-container" style="margin-top:50px; position: relative;min-height: 84vh;">
+  <div class="container">
+  <div id="content-wrap" style="padding-bottom:50px;">
 
 <div class="row">
     <div class="col-lg-6">
@@ -82,10 +84,11 @@
 </div>
 
 </div>
-
+</div>
 
 
 
 <?php include('footer.php') ?>
+</div>
 </body>
 </html>
