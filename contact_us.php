@@ -24,8 +24,9 @@ $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
   echo '<div class="alert alert-success alert_dismissible"><b><button type="button" class="close" data-dismiss="alert">&times;</button></b><b>Query Sent, We will contact you shortly. </b></div>';
 }?>
 
-
-<div class="container">
+<div id="page-container" style="margin-top:50px; position: relative;min-height: 84vh;">
+  <div class="container">
+  <div id="content-wrap" style="padding-bottom:50px;">
     <h1 class="mt-4 mb-3">Contact</h1>
     <div class="row">
       <div class="col-lg-8 mb-4">
@@ -86,8 +87,9 @@ $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
 
 
 </div>
+</div>
 <?php include 'footer.php' ?>
-
+</div>
 </body>
 
 </html>
