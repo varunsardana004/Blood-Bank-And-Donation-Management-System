@@ -64,6 +64,56 @@ It is also needed for regular transfusions for people with conditions such as th
 
 
 
+INSERT INTO pages (page_id, page_name, page_type, page_data) VALUES
+(4, 'The Need For Blood', 'needforblood', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">There are many reasons patients need blood. A common misunderstanding about blood usage is that accident victims are the patients who use the most blood. Actually, people needing the most blood include those:
+1) Being treated for cancer<br>
+2) Undergoing orthopedic surgeries<br>
+3) Undergoing cardiovascular surgeries<br>
+4) Being treated for inherited blood disorders</span>');
+
+INSERT INTO pages (page_id, page_name, page_type, page_data) VALUES
+(5, 'Blood Tips', 'bloodtips', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">
+1) You must be in good health. <br>
+2) Hydrate and eat a healthy meal before your donation.<br>
+3) You’re never too old to donate blood. <br>
+4) Rest and relaxed.<br>
+5) Don’t forget your FREE post-donation snack. 
+</span>'),
+(6, 'Who you could Help', 'whoyouhelp', '<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">
+Every 2 seconds, someone in the World needs blood. Donating blood can help:
+
+1) People who go through disasters or emergency situations.<br>
+2) People who lose blood during major surgeries.<br>
+3) People who have lost blood because of a gastrointestinal bleed.<br>
+4) Women who have serious complications during pregnancy or childbirth.<br>
+5) People with cancer or severe anemia sometimes caused by thalassemia or sickle cell disease.<br>
+</span>');
+INSERT INTO pages (page_id, page_name, page_type, page_data) VALUES
+('7','Blood Groups','bloodgroups','<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">
+  <p>  Blood group of any human being will mainly fall in any one of the following groups.</p>
+                <ul>
+
+                  <li>A positive or A negative</li>
+                  <li>B positive or B negative</li>
+                  <li>O positive or O negative</li>
+                  <li>AB positive or AB negative.</li>
+                </ul>
+                <p>Your blood group is determined by the genes you inherit from your parents.<br>
+                  A healthy diet helps ensure a successful blood donation, and also makes you feel better!
+                </p>
+
+</span>'),
+('8','Universal Donors And Recepients','universal','<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;">
+  <p>
+The most common blood type is O, followed by type A.
+
+Type O individuals are often called "universal donors" since their blood can be transfused into persons with any blood type. Those with type AB blood are called "universal recipients" because they can receive blood of any type.</p>
+
+            For emergency transfusions, blood group type O negative blood is the variety of blood that has the lowest risk of causing serious reactions for most people who receive it. Because of this, it\'s sometimes called the universal blood donor type.
+
+</span>');
+
+
 update pages
 set page_data='<span style="color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;">Blood is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets and plasma — which can be used individually for patients with specific conditions. Safe blood saves lives and improves health. Blood transfusion is needed for:
 <ul><li>women with complications of pregnancy, such as ectopic pregnancies and haemorrhage before, during or after childbirth.
