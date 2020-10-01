@@ -22,9 +22,9 @@
 </div>
 <?php include'ticker.php'; ?>
 
-
-<div class="container" style="margin-top:50px">
-
+  <div id="page-container" style="margin-top:50px; position: relative;min-height: 84vh;   ">
+    <div class="container">
+    <div id="content-wrap"style="padding-bottom:75px;">
   <div id="demo" class="carousel slide" data-ride="carousel">
 
     <!-- Indicators -->
@@ -52,37 +52,69 @@
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>
-
-
-</div>
-
-
-
-    <div class="container">
-
-        <h1 style="text-align:center">Welcome to BloodBank & Donor Management System</h1>
-
+<br>
+        <h1 style="text-align:center;font-size:45px;">Welcome to BloodBank & Donor Management System</h1>
+<br>
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <h4 class="card-header card bg-info text-white">The need for blood</h4>
+                    <h4 class="card-header card bg-info text-white" >The need for blood</h4>
 
-                        <p class="card-body" style="padding-left:2%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                        <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
+                          <?php
+                            include 'conn.php';
+                            $sql=$sql= "select * from pages where page_type='needforblood'";
+                            $result=mysqli_query($conn,$sql);
+                            if(mysqli_num_rows($result)>0)   {
+                                while($row = mysqli_fetch_assoc($result)) {
+                                  echo $row['page_data'];
+                                }
+                              }
+
+                           ?>
+                         </p>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
                     <h4 class="card-header card bg-info text-white">Blood Tips</h4>
 
-                        <p class="card-body" style="padding-left:2%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                </div>
+                    <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
+                      <?php
+                        include 'conn.php';
+                        $sql=$sql= "select * from pages where page_type='bloodtips'";
+                        $result=mysqli_query($conn,$sql);
+                        if(mysqli_num_rows($result)>0)   {
+                            while($row = mysqli_fetch_assoc($result)) {
+                              echo $row['page_data'];
+                            }
+                          }
+
+                       ?>
+                     </p>
+
+                        </div>
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card">
                     <h4 class="card-header card bg-info text-white" >Who you could Help</h4>
 
-                        <p class="card-body" style="padding-left:2%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                </div>
+                    <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
+                      <?php
+                        include 'conn.php';
+                        $sql=$sql= "select * from pages where page_type='whoyouhelp'";
+                        $result=mysqli_query($conn,$sql);
+                        if(mysqli_num_rows($result)>0)   {
+                            while($row = mysqli_fetch_assoc($result)) {
+                              echo $row['page_data'];
+                            }
+                          }
+
+                       ?>
+                     </p>
+
+
+                        </div>
             </div>
 </div>
 
@@ -122,18 +154,19 @@
         <div class="row">
             <div class="col-lg-6">
                 <h2>BLOOD GROUPS</h2>
-          <p>  blood group of any human being will mainly fall in any one of the following groups.</p>
-                <ul>
+                <p>
+                  <?php
+                    include 'conn.php';
+                    $sql=$sql= "select * from pages where page_type='bloodgroups'";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0)   {
+                        while($row = mysqli_fetch_assoc($result)) {
+                          echo $row['page_data'];
+                        }
+                      }
 
+                   ?></p>
 
-                  <li>A positive or A negative</li>
-                  <li>B positive or B negative</li>
-                  <li>O positive or O negative</li>
-                  <li>AB positive or AB negative.</li>
-                </ul>
-                <p>Your blood group is determined by the genes you inherit from your parents.<br>
-                  A healthy diet helps ensure a successful blood donation, and also makes you feel better!
-                </p>
             </div>
             <div class="col-lg-6">
                 <img class="img-fluid rounded" src="image\blood_donationcover.jpeg" alt="" >
@@ -147,21 +180,27 @@
         <div class="row mb-4">
             <div class="col-md-8">
             <h4>UNIVERSAL DONORS AND RECIPIENTS</h4>
-                <p>
-The most common blood type is O, followed by type A.
+            <p>
+              <?php
+                include 'conn.php';
+                $sql=$sql= "select * from pages where page_type='universal'";
+                $result=mysqli_query($conn,$sql);
+                if(mysqli_num_rows($result)>0)   {
+                    while($row = mysqli_fetch_assoc($result)) {
+                      echo $row['page_data'];
+                    }
+                  }
 
-Type O individuals are often called "universal donors" since their blood can be transfused into persons with any blood type. Those with type AB blood are called "universal recipients" because they can receive blood of any type.</p>
-
-            For emergency transfusions, blood group type O negative blood is the variety of blood that has the lowest risk of causing serious reactions for most people who receive it. Because of this, it's sometimes called the universal blood donor type.</div>
+               ?></p>
+              </div>
             <div class="col-md-4">
                 <a class="btn btn-lg btn-secondary btn-block" href="donate_blood.php" style="align:center; background-color:#7FB3D5;color:#273746 ">Become a Donor </a>
             </div>
         </div>
 
     </div>
-
+  </div>
   <?php include('footer.php');?>
-
 </div>
 
 </body>
