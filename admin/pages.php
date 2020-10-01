@@ -80,7 +80,7 @@ include 'conn.php';
                   <td><?php echo ++$count; ?></td>
                   <td><?php echo $row['page_name']; ?></td>
                   <td><?php echo $row['page_type']; ?></td>
-                  <td><?php echo $row['page_data']; ?></td>
+                  <td style="text-align:left;"><?php echo $row['page_data']; ?></td>
                     <td id="he" style="width:100px">
                     <a style="background-color:aqua" href='update_page_details.php?type=<?php echo $row['page_type'];?>'> <span class="glyphicon glyphicon-edit"></span></a>
                 </td>
