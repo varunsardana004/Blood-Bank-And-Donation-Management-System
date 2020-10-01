@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -11,9 +12,11 @@
 
 <style>
 
+
 #sidebar{position:relative;margin-top:-20px}
 #content{position:relative;margin-left:210px}
 @media screen and (max-width: 600px) {
+
   #content {
     position:relative;margin-left:auto;margin-right:auto;
   }
@@ -28,7 +31,9 @@
       border-radius: 3px;
       align:center
   }
+
 </style>
+
 </head>
 <?php
 include 'conn.php';
@@ -36,7 +41,7 @@ include 'conn.php';
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   ?>
 <body style="color:black">
-<div id="header">
+<div id="header" >
 <?php include 'header.php';
 ?>
 </div>
@@ -50,16 +55,22 @@ include 'conn.php';
       <div class="row">
         <div class="col-md-12 lg-12 sm-12">
 
-          <h1 class="page-title">Page List</h1>
+          <h1 class="page-title">Manage Page Data</h1>
 
         </div>
 
       </div>
       <hr>
       <?php
-        include 'conn.php';
-        $count=0;
-        $sql= "select * from pages ";
+      $limit = 3;
+      if(isset($_GET['page'])){
+        $page = $_GET['page'];
+      }else{
+        $page = 1;
+      }
+      $offset = ($page - 1) * $limit;
+      $count=$offset+1;
+        $sql= "select * from pages LIMIT {$offset},{$limit} ";
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0)   {
        ?>
@@ -77,11 +88,11 @@ include 'conn.php';
             <?php
             while($row = mysqli_fetch_assoc($result)) { ?>
           <tr>
-                  <td><?php echo ++$count; ?></td>
-                  <td><?php echo $row['page_name']; ?></td>
-                  <td><?php echo $row['page_type']; ?></td>
-                  <td style="text-align:left;"><?php echo $row['page_data']; ?></td>
-                    <td id="he" style="width:100px">
+                  <td ><?php echo  $count++; ?></td>
+                  <td ><?php echo $row['page_name']; ?></td>
+                  <td ><?php echo $row['page_type']; ?></td>
+                  <td id="example" style="text-align:left"><div style="width:100%; max-height:130px; overflow:auto"><?php echo $row['page_data']; ?></div></td>
+                    <td id="he" style="width:100px;">
                     <a style="background-color:aqua" href='update_page_details.php?type=<?php echo $row['page_type'];?>'> <span class="glyphicon glyphicon-edit"></span></a>
                 </td>
               </tr>
@@ -91,6 +102,37 @@ include 'conn.php';
     </div>
     <?php } ?>
 
+    <div class="table-responsive"style="text-align:center;align:center">
+        <?php
+        $sql1 = "SELECT * FROM pages";
+        $result1 = mysqli_query($conn, $sql1) or die("Query Failed.");
+
+        if(mysqli_num_rows($result1) > 0){
+
+          $total_records = mysqli_num_rows($result1);
+
+          $total_page = ceil($total_records / $limit);
+
+          echo '<ul class="pagination admin-pagination">';
+          if($page > 1){
+            echo '<li><a href="pages.php?page='.($page - 1).'">Prev</a></li>';
+          }
+          for($i = 1; $i <= $total_page; $i++){
+            if($i == $page){
+              $active = "active";
+            }else{
+              $active = "";
+            }
+            echo '<li class="'.$active.'"><a href="pages.php?page='.$i.'">'.$i.'</a></li>';
+          }
+          if($total_page > $page){
+            echo '<li><a href="pages.php?page='.($page + 1).'">Next</a></li>';
+          }
+
+          echo '</ul>';
+        }
+        ?>
+      </div>
   </div>
   </div>
 </div>
