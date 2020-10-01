@@ -58,7 +58,7 @@ include 'conn.php';
       <hr>
       <?php
         include 'conn.php';
-        $count=0;
+
         $limit = 10;
         if(isset($_GET['page'])){
           $page = $_GET['page'];
@@ -66,6 +66,7 @@ include 'conn.php';
           $page = 1;
         }
         $offset = ($page - 1) * $limit;
+        $count=$offset+1;
         $sql= "select * from donor_details join blood where donor_details.donor_blood=blood.blood_id LIMIT {$offset},{$limit}";
         $result=mysqli_query($conn,$sql);
         if(mysqli_num_rows($result)>0)   {
@@ -88,7 +89,7 @@ include 'conn.php';
             <?php
             while($row = mysqli_fetch_assoc($result)) { ?>
           <tr>
-                  <td><?php echo ++$count; ?></td>
+                  <td><?php echo $count++; ?></td>
                   <td><?php echo $row['donor_name']; ?></td>
                   <td><?php echo $row['donor_number']; ?></td>
                   <td><?php echo $row['donor_mail']; ?></td>
