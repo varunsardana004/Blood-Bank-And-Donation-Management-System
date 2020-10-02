@@ -102,6 +102,24 @@
                     case "donor" :
                           echo "Why Donate Blood";
                           break;
+                    case "needforblood" :
+                          echo "The Need For Blood";
+                          break;
+                    case "needforblood" :
+                          echo "The Need For Blood";
+                          break;
+                    case "bloodtips" :
+                          echo "Blood Tips";
+                          break;
+                    case "whoyouhelp" :
+                          echo "Why you could Help";
+                          break;
+                    case "bloodgroups" :
+                          echo "Blood Groups";
+                          break;
+                    case "universal" :
+                          echo "Universal Donors And Recepients";
+                          break;
               }
 
               ?>
