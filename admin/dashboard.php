@@ -51,8 +51,8 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-3">
-              <div class="panel panel-default panel-info">
-                <div class="panel-body panel-info bk-primary text-light" style="background-color:#D6EAF8 ">
+              <div class="panel panel-default panel-info" style="border-radius:50px;">
+                <div class="panel-body panel-info bk-primary text-light" style="background-color:#D6EAF8; border-radius:50px">
                   <div class="stat-panel text-center">
                     <?php
                       $sql =" SELECT * from donor_details ";
@@ -62,10 +62,14 @@
                     ?>
 
 
-                    <div class="stat-panel-number h1 "><?php echo $row?></div>
+                    <div class="stat-panel-number h1"><?php echo $row?></div>
                     <div class="stat-panel-title text-uppercase">Blood Donors Available </div>
                     <br>
-                      <a href="donor_list.php" class="block-anchor panel-footer" style="color:red">Full Detail <i class="fa fa-arrow-right"></i></a>
+                      <button class="btn btn-danger" onclick="window.location.href = 'donor_list.php';">
+                        Full Detail <i class="fa fa-arrow-right"></i>
+                      </button>
+
+
                   </div>
                 </div>
 
@@ -73,8 +77,8 @@
             </div>
 
             <div class="col-md-3">
-              <div class="panel panel-default panel-info">
-                <div class="panel-body panel-info bk-primary text-light" style="background-color:#ABEBC6 ">
+              <div class="panel panel-default panel-info" style="border-radius:50px;">
+                <div class="panel-body panel-info bk-primary text-light" style="background-color:#ABEBC6;border-radius:50px;">
                   <div class="stat-panel text-center">
                     <?php
                       $sql1 =" SELECT * from contact_query ";
@@ -87,7 +91,9 @@
                     <div class="stat-panel-number h1 "><?php echo $row1?></div>
                     <div class="stat-panel-title text-uppercase"> User Queries </div>
                     <br>
-                      <a href="query.php" class="block-anchor panel-footer" style="color:red">Full Detail <i class="fa fa-arrow-right"></i></a>
+                    <button class="btn btn-danger" onclick="window.location.href = 'query.php';">
+                      Full Detail <i class="fa fa-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
 
@@ -95,8 +101,8 @@
             </div>
 
             <div class="col-md-3">
-              <div class="panel panel-default panel-info">
-                <div class="panel-body panel-info bk-primary text-light" style="background-color:#E8DAEF  ">
+              <div class="panel panel-default panel-info" style="border-radius:50px;">
+                <div class="panel-body panel-info bk-primary text-light" style="background-color:#E8DAEF ;border-radius:50px; ">
                   <div class="stat-panel text-center">
                     <?php
                       $sql2 =" SELECT * from contact_query where query_status=2";
@@ -109,7 +115,9 @@
                     <div class="stat-panel-number h1 "><?php echo $row2?></div>
                     <div class="stat-panel-title text-uppercase"> Pending Queries </div>
                     <br>
-                      <a href="query.php" class="block-anchor panel-footer" style="color:red">Full Detail <i class="fa fa-arrow-right"></i></a>
+                    <button class="btn btn-danger" onclick="window.location.href = 'query.php';">
+                      Full Detail <i class="fa fa-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
 
