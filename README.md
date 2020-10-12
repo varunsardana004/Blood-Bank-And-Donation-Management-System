@@ -12,7 +12,7 @@ Blood Bank Donation System is a php based web project with both admin and user l
 
 OR follow gitbash commands
  i>cd C:\\xampp\htdocs\
- ii>git clone https://github.com/PuneethReddyHC/online-shopping-system-advanced.git
+ ii>git clone https://github.com/varunsardana004/Blood-Bank-And-Donation-Management-System.git
 
 # Main Admin Panel : http://localhost/bdms/admin/login.php
 # Use the below Admin Credentials to login to the Admin Panel.
