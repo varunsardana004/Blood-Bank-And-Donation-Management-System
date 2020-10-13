@@ -10,13 +10,22 @@ Blood Bank Donation System is a php based web project with both admin and user l
 
 3. Download project from github(https://github.com/varunsardana004/Blood-Bank-And-Donation-Management-System.git).
 
-OR follow gitbash commands
+OR follow gitbash commands <br>
  i>cd C:\\xampp\htdocs\
  ii>git clone https://github.com/varunsardana004/Blood-Bank-And-Donation-Management-System.git
+4. Extract files in C:\xampp\htdocs.
 
-# Main Admin Panel : http://localhost/bdms/admin/login.php
-# Use the below Admin Credentials to login to the Admin Panel.
-ADMIN : username = varunsardana004  
-        password = 123
-        
+5. Open link localhost/phpmyadmin
+
+6. Click on new at side navbar.
+
+7. Give a database name as (blood_bank_database) hit on create button.
+
+8. After creating database name click on import.
+
+9. Browse the file in directory[BDMS/sql/blood_bank_database.sql].
+
+10. After importing successfully.
+
+11. Open any browser and type http://localhost/bdms/home.php to open User layout.
      
