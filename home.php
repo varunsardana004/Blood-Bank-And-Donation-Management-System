@@ -17,7 +17,9 @@
 
 <body>
 <div class="header">
-<?php include('head.php'); ?>
+<?php
+$active="home";
+include('head.php'); ?>
 
 </div>
 <?php include'ticker.php'; ?>
