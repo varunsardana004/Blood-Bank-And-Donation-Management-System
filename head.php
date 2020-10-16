@@ -36,7 +36,7 @@
 /* Change the background color on mouse-over */
 .header a:hover {
   background-color: #ddd;
-  color: red;
+  color: black;
 }
 
 /* Style the active/current link*/
@@ -54,10 +54,14 @@
     display: block;
     text-align: left;
   }
-  
   .header-right {
     float: none;
   }
+}
+a.act{
+background: linear-gradient(to right, #fd746c 0%, #ff9068 100%);
+color: white;
+border-radius:30px;
 }
 </style>
 </head>
@@ -66,11 +70,11 @@
   <div class="header">
     <a href="home.php" class="logo">Blood Bank & Donation </a>
     <div class="header-right">
-      <a  href="about_us.php">About Us</a>
-      <a href="why_donate_blood.php">Why Donate Blood</a>
-      <a href="donate_blood.php">Become A Donor</a>
-      <a href="need_blood.php">Need Blood</a>
-      <a href="contact_us.php">Contact Us</a>
+    <a href="about_us.php"  <?php if($active=='about') echo "class='act'"; ?> >About Us</a>
+    <a href="why_donate_blood.php"  <?php if($active=='why') echo "class='act'"; ?>>Why Donate Blood</a>
+      <a href="donate_blood.php"  <?php if($active=='donate') echo "class='act'"; ?>>Become A Donor</a>
+      <a href="need_blood.php" <?php if($active=='need') echo "class='act'"; ?>>Need Blood</a>
+      <a href="contact_us.php" <?php if($active=='contact') echo "class='act'"; ?>>Contact Us</a>
     </div>
   </div>
 
