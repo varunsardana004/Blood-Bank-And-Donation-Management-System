@@ -11,7 +11,8 @@
 </head>
 
 <body>
-<?php include 'head.php'; ?>
+<?php $active ='contact';
+include 'head.php'; ?>
 <?php
 if(isset($_POST["send"])){
   $name=$_POST['fullname'];
