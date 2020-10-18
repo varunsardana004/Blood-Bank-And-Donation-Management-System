@@ -55,6 +55,12 @@ div.content {
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
 }
+a.act{
+background: linear-gradient(to right, #00C9FF 0%, #92FE9D 100%);
+color: black;
+border-radius:10px;
+}
+
 
 @media screen and (max-width: 400px) {
   .sidebar a {
@@ -66,13 +72,13 @@ div.content {
 </head>
 <body>
 
-<div class="sidebar" >
-  <a href="dashboard.php" style="color:white;"><span class="glyphicon glyphicon-dashboard"></span>&nbsp&nbspDashboard</a>
-  <a href="add_donor.php" style="color:white;"><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbspAdd Donor</a>
-  <a href="donor_list.php" style="color:white;"><span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbsp Donor List</a>
-  <a href="query.php" style="color:white;"><span class="glyphicon glyphicon-check"></span>&nbsp&nbspCheck Contactus Query</a>
+<div class="sidebar" ><b>
+  <a href="dashboard.php"   <?php if($active=='dashboard') echo "class='act'"; ?>><span class="glyphicon glyphicon-dashboard"></span>&nbsp&nbspDashboard</a>
+  <a href="add_donor.php"   <?php if($active=='add') echo "class='act'"; ?>><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbspAdd Donor</a>
+  <a href="donor_list.php"   <?php if($active=='list') echo "class='act'"; ?>><span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbsp Donor List</a>
+  <a href="query.php"   <?php if($active=='query') echo "class='act'"; ?>><span class="glyphicon glyphicon-check"></span>&nbsp&nbspCheck Contactus Query</a>
 
-    <a href="pages.php" style="color:white;"><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspManage Pages</a>
-  <a href="update_contact.php" style="color:white;"><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspUpdate Contact Info</a>
+    <a href="pages.php"   <?php if($active=='pages') echo "class='act'"; ?>><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspManage Pages</a>
+  <a href="update_contact.php"   <?php if($active=='contact') echo "class='act'"; ?>><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspUpdate Contact Info</a>
 
 </div>
