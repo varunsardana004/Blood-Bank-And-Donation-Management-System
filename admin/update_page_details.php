@@ -68,7 +68,8 @@
 ?>
 </div>
 <div id="sidebar">
-<?php include 'sidebar.php'; ?>
+<?php $active =""; 
+include 'sidebar.php'; ?>
 
 </div>
 <div id="content">
