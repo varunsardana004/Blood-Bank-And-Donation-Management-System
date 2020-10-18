@@ -28,7 +28,7 @@
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
 <div id="header">
-<?php include 'header.php';
+<?php $active="add"; include 'header.php';
 ?>
 </div>
 <div id="sidebar">
