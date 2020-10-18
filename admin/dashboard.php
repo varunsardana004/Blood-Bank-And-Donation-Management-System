@@ -18,10 +18,17 @@
     position:relative;margin-left:auto;margin-right:auto;
   }
 }
+
+
+.block-anchor {
+            color:red;
+
+            cursor: pointer;
+        }
 </style>
 </head>
 
-<body style="color:black">
+<body style="color:black;" >
 
   <?php
   include 'conn.php';
@@ -34,15 +41,17 @@
 ?>
 </div>
 <div id="sidebar">
-<?php include 'sidebar.php'; ?>
+<?php
+$active="dashboard";
+include 'sidebar.php'; ?>
 
 </div>
 <div id="content">
+
   <div class="content-wrapper">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 lg-12 sm-12">
-
           <h1 class="page-title">Dashboard</h1>
         </div>
       </div>
