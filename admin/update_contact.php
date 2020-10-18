@@ -34,7 +34,9 @@
 ?>
 </div>
 <div id="sidebar">
-<?php include 'sidebar.php'; ?>
+<?php 
+$active="contact";
+ include 'sidebar.php'; ?>
 
 </div>
 <div id="content">
