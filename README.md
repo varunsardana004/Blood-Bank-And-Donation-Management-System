@@ -73,5 +73,41 @@ Blood Bank Donation System is a php based web project with both admin and user l
    6. Contact Us Page
    <img src="https://user-images.githubusercontent.com/54537819/96303477-10ad8980-1018-11eb-9b9b-8629ad48fa2b.png">
    
+   <br>
+   <br><br>
+   <br>
+   <h3> Admin Panel Images </h3>
+   <br>
+   <br>1. Admin Panel Login Portal
+   <img src="https://user-images.githubusercontent.com/54537819/96365985-43fc2f80-1162-11eb-801c-056f973e61b4.png">
+   <br>
+   <br>
+   2.Dashboard 
+   <img src="https://user-images.githubusercontent.com/54537819/96366040-ace3a780-1162-11eb-86d9-9270b8931b70.png"><br><br>
+   <img src="https://user-images.githubusercontent.com/54537819/96366049-ba992d00-1162-11eb-84e8-b90fb507f20d.png">
+   <br><br>
+   3.Change Password Page
+   <img src="https://user-images.githubusercontent.com/54537819/96366158-75c1c600-1163-11eb-909b-2021d5cd2b06.png">
+   <br><br>
+   4.Add Donor Page
+   <img src="https://user-images.githubusercontent.com/54537819/96366077-e3212700-1162-11eb-9f81-7d0dca60e913.png">
+   <br>
+   <br>
+   5.Donor List Page
+   <img src="https://user-images.githubusercontent.com/54537819/96366097-fdf39b80-1162-11eb-99cc-8506d03c900d.png">
+   <br><br>
+   6.Check Contact Us Query Page
+   <img src="https://user-images.githubusercontent.com/54537819/96366120-1c599700-1163-11eb-9fa4-55355192d1b8.png">
+   <br><br>
+   7.Manage Page Data
+   <img src="https://user-images.githubusercontent.com/54537819/96366140-4f9c2600-1163-11eb-86fc-65d9094f0807.png">
+   <br>
+   <br>
+   8.Update Page Details
+   <img src="https://user-images.githubusercontent.com/54537819/96366183-938f2b00-1163-11eb-8f3a-4cb90e877c11.png">
+   <br>
+   <br>
+   9.Update Contact Info Page
+   <img src="https://user-images.githubusercontent.com/54537819/96366208-b15c9000-1163-11eb-8163-e2d9f9bc4af5.png">
    
    
