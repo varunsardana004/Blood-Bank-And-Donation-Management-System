@@ -16,10 +16,15 @@ Primary key(donor_id)
 /*create table admin_info in which all admin information gets stored.*/
 create table admin_info(
 admin_id int(10) NOT NULL UNIQUE AUTO_INCREMENT,
+admin_name varchar(50) NOT NULL,
 admin_username varchar(50) NOT NULL UNIQUE,
 admin_password varchar(50) NOT NULL,
 Primary key(admin_id)
 );
+
+/*  insert admin data into admin_info table*/
+insert into admin_info(admin_name,admin_username,admin_password)
+values("Varun","varunsardana004",123);
 
 /*create table blood in which all blood group is stored.*/
 create table blood(
@@ -27,6 +32,10 @@ blood_id int auto_increment Not Null,
 blood_group varchar(10) NOT NULL,
 primary key(blood_id)
 );
+
+/* insert all blood groups*/
+insert into blood(blood_group)
+values("B+"),("B-"),("A+"),("O+"),("O-"),("A-"),("AB+"),("AB-");
 
 
 /*create table pages in which all pages information gets stored.*/
