@@ -98,7 +98,7 @@ include 'sidebar.php'; ?>
 
 
                     <div class="stat-panel-number h1 "><?php echo $row1?></div>
-                    <div class="stat-panel-title text-uppercase"> User Queries </div>
+                    <div class="stat-panel-title text-uppercase"> All User Queries </div>
                     <br>
                     <button class="btn btn-danger" onclick="window.location.href = 'query.php';">
                       Full Detail <i class="fa fa-arrow-right"></i>
@@ -114,17 +114,17 @@ include 'sidebar.php'; ?>
                 <div class="panel-body panel-info bk-primary text-light" style="background-color:#E8DAEF ;border-radius:50px; ">
                   <div class="stat-panel text-center">
                     <?php
-                      $sql2 =" SELECT * from contact_query where query_status=2";
+                      $sql2 ="SELECT * from contact_query where query_status=2 ";
                       $result2=mysqli_query($conn,$sql2) or die("query failed.");
                       $row2=mysqli_num_rows($result2);
 
                     ?>
 
 
-                    <div class="stat-panel-number h1 "><?php echo $row2?></div>
+                    <div class="stat-panel-number h1 "><?php echo $row2 ?></div>
                     <div class="stat-panel-title text-uppercase"> Pending Queries </div>
                     <br>
-                    <button class="btn btn-danger" onclick="window.location.href = 'query.php';">
+                    <button class="btn btn-danger" onclick="window.location.href = 'pending_query.php';">
                       Full Detail <i class="fa fa-arrow-right"></i>
                     </button>
                   </div>
