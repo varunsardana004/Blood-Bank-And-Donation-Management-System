@@ -64,14 +64,16 @@ include('head.php'); ?>
 
                         <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
                           <?php
-                            include 'conn.php';
-                            $sql=$sql= "select * from pages where page_type='needforblood'";
-                            $result=mysqli_query($conn,$sql);
-                            if(mysqli_num_rows($result)>0)   {
-                                while($row = mysqli_fetch_assoc($result)) {
+                            require_once 'conn.php';
+                            $sql="SELECT * FROM pages WHERE page_type='needforblood'";
+                            $stmt=$db->prepare($sql);
+                            $stmt->execute();
+                            if($stmt->rowCount() > 0)   {
+                                while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                   echo $row['page_data'];
                                 }
                               }
+                              $stmt->closeCursor();
 
                            ?>
                          </p>
@@ -83,14 +85,16 @@ include('head.php'); ?>
 
                     <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
                       <?php
-                        include 'conn.php';
-                        $sql=$sql= "select * from pages where page_type='bloodtips'";
-                        $result=mysqli_query($conn,$sql);
-                        if(mysqli_num_rows($result)>0)   {
-                            while($row = mysqli_fetch_assoc($result)) {
+                        require_once 'conn.php';
+                        $sql= "SELECT * FROM pages where page_type='bloodtips'";
+                        $stmt=$db->prepare($sql);
+                        $stmt->execute();
+                        if($stmt->rowCount() > 0)   {
+                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               echo $row['page_data'];
                             }
                           }
+                          $stmt->closeCursor();
 
                        ?>
                      </p>
@@ -103,14 +107,16 @@ include('head.php'); ?>
 
                     <p class="card-body overflow-auto" style="padding-left:2%;height:120px;text-align:left;">
                       <?php
-                        include 'conn.php';
-                        $sql=$sql= "select * from pages where page_type='whoyouhelp'";
-                        $result=mysqli_query($conn,$sql);
-                        if(mysqli_num_rows($result)>0)   {
-                            while($row = mysqli_fetch_assoc($result)) {
+                        require_once 'conn.php';
+                        $sql= "SELECT * FROM pages WHERE page_type='whoyouhelp'";
+                        $stmt= $db->prepare($sql);
+                        $stmt->execute();
+                        if(($stmt->rowCount() > 0)   {
+                            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               echo $row['page_data'];
                             }
                           }
+                          $stmt->closeCursor();
 
                        ?>
                      </p>
@@ -124,12 +130,13 @@ include('head.php'); ?>
 
         <div class="row">
           <?php
-            include 'conn.php';
-            $sql= "select * from donor_details join blood where donor_details.donor_blood=blood.blood_id order by rand() limit 6";
-            $result=mysqli_query($conn,$sql);
-            if(mysqli_num_rows($result)>0)
+            require_once 'conn.php';
+            $sql= "SELECT * FROM donor_details JOIN blood WHERE donor_details.donor_blood=blood.blood_id ORDER BY rand() LIMIT 6";
+            $stmt=$db->prepare($sql);
+            $stmt->execute();
+            if($stmt->rowCount() > 0)
             {
-            while($row = mysqli_fetch_assoc($result)) {
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
            ?>
             <div class="col-lg-4 col-sm-6 portfolio-item" ><br>
             <div class="card" style="width:300px">
@@ -147,7 +154,9 @@ include('head.php'); ?>
                 </div>
               </div>
         </div>
-      <?php }} ?>
+      <?php }}
+      $stmt->closeCursor();
+      ?>
 </div>
 <br>
         <!-- /.row -->
@@ -158,14 +167,16 @@ include('head.php'); ?>
                 <h2>BLOOD GROUPS</h2>
                 <p>
                   <?php
-                    include 'conn.php';
-                    $sql=$sql= "select * from pages where page_type='bloodgroups'";
-                    $result=mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result)>0)   {
-                        while($row = mysqli_fetch_assoc($result)) {
+                    require_once 'conn.php';
+                    $sql= "SELECT * FROM pages WHERE page_type='bloodgroups'";
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute();
+                    if($stmt->rowCount() > 0)   {
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           echo $row['page_data'];
                         }
                       }
+                      $stmt->closeCursor();
 
                    ?></p>
 
@@ -184,14 +195,16 @@ include('head.php'); ?>
             <h4>UNIVERSAL DONORS AND RECIPIENTS</h4>
             <p>
               <?php
-                include 'conn.php';
-                $sql=$sql= "select * from pages where page_type='universal'";
-                $result=mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result)>0)   {
-                    while($row = mysqli_fetch_assoc($result)) {
-                      echo $row['page_data'];
-                    }
-                  }
+                require_once 'conn.php';
+                    $sql= "SELECT * FROM pages WHERE page_type='universal'";
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute();
+                    if($stmt->rowCount() > 0)   {
+                        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                          echo $row['page_data'];
+                        }
+                      }
+                  $stmt->closeCursor();
 
                ?></p>
               </div>

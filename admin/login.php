@@ -47,28 +47,28 @@
   </div></div>
 <br>
   <?php
-    include 'conn.php';
+    require_once '../conn.php';
 
   if(isset($_POST["login"])){
 
-    $username=mysqli_real_escape_string($conn,$_POST["username"]);
-    $password=mysqli_real_escape_string($conn,$_POST["password"]);
+    $username=$db->quote($_POST["username"]);
+    $password=$db->quote($_POST["password"]);
 
-    $sql="SELECT * from admin_info where admin_username='$username' and admin_password='$password'";
-    $result=mysqli_query($conn,$sql) or die("query failed.");
-
-    if(mysqli_num_rows($result)>0)
+    $sql="SELECT * FROM admin_info WHERE admin_username=$username AND admin_password=$password";
+    $result = $db->prepare($sql);
+    $result->execute();
+    if($result->rowCount() > 0)
     {
-      while($row=mysqli_fetch_assoc($result)){
+      while($row= $result->fetch(PDO::FETCH_ASSOC)){
         session_start();
          $_SESSION['loggedin'] = true;
         $_SESSION["username"]=$username;
         header("Location: dashboard.php");
       }
-    }
-    else {
+    } else {
       echo '<div class="alert alert-danger" style="font-weight:bold"> Username and Password are not matched!</div>';
     }
+    $result->closeCursor();
 
   }
    ?>

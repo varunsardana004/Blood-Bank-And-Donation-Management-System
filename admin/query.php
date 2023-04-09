@@ -31,7 +31,7 @@
 </style>
 </head>
 <?php
-include 'conn.php';
+require_once '../conn.php';
   include 'session.php';
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   ?>
@@ -65,8 +65,10 @@ include 'conn.php';
             echo '<div class="alert alert-info alert_dismissible"><b><button type="button" class="close" data-dismiss="alert">&times;</button></b><b>Pending Request "Read".</b></div>';
 
             $que_id = $_GET['id'];
-             $sql1="update contact_query set query_status='1' where  query_id={$que_id}";
-              $result=mysqli_query($conn,$sql1);
+             $sql1="UPDATE contact_query set query_status='1' WHERE  query_id={$que_id}";
+              $result= $db->prepare($sql);
+              $result->execute();
+              $result->closeCursor();
             ?>
         }
       }
@@ -76,7 +78,6 @@ include 'conn.php';
 
 
       <?php
-        include 'conn.php';
 
           $limit = 10;
           if(isset($_GET['page'])){
@@ -86,9 +87,10 @@ include 'conn.php';
           }
           $offset = ($page - 1) * $limit;
           $count=$offset+1;
-        $sql= "select * from contact_query LIMIT {$offset},{$limit}";
-        $result=mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0)   {
+        $sql= "SELECT * FROM contact_query LIMIT {$offset},{$limit}";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        if($stmt->rowCount() > 0)   {
        ?>
 
        <div class="table-responsive">
@@ -105,7 +107,7 @@ include 'conn.php';
           </thead>
           <tbody>
             <?php
-            while($row = mysqli_fetch_assoc($result)) { ?>
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
           <tr>
 
                   <td><?php echo $count++; ?></td>
@@ -132,16 +134,18 @@ include 'conn.php';
           </tbody>
       </table>
     </div>
-    <?php } ?>
+    <?php }
+    $stmt->closeCursor();
+    ?>
 
     <div class="table-responsive"style="text-align:center;align:center">
         <?php
         $sql1 = "SELECT * FROM contact_query";
-        $result1 = mysqli_query($conn, $sql1) or die("Query Failed.");
+        $result1 = $db->prepare($sql);
+        $result1->execute();
+        if($result1->rowCount() > 0){
 
-        if(mysqli_num_rows($result1) > 0){
-
-          $total_records = mysqli_num_rows($result1);
+          $total_records = $result1->rowCount();
 
           $total_page = ceil($total_records / $limit);
 
@@ -163,6 +167,7 @@ include 'conn.php';
 
           echo '</ul>';
         }
+        $result1->closeCursor();
         ?>
 
         </div>
