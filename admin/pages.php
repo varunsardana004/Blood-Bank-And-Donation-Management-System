@@ -36,7 +36,7 @@
 
 </head>
 <?php
-include 'conn.php';
+require_once '../conn.php';
   include 'session.php';
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   ?>
@@ -71,9 +71,10 @@ include 'conn.php';
       }
       $offset = ($page - 1) * $limit;
       $count=$offset+1;
-        $sql= "select * from pages LIMIT {$offset},{$limit} ";
-        $result=mysqli_query($conn,$sql);
-        if(mysqli_num_rows($result)>0)   {
+        $sql= "SELECT * FROM pages LIMIT {$offset},{$limit} ";
+        $result= $db->prepare($sql);
+        $result->execute();
+        if($result->rowCount() > 0)   {
        ?>
 
        <div class="table-responsive">
@@ -87,7 +88,7 @@ include 'conn.php';
           </thead>
           <tbody>
             <?php
-            while($row = mysqli_fetch_assoc($result)) { ?>
+            while($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
           <tr>
                   <td ><?php echo  $count++; ?></td>
                   <td ><?php echo $row['page_name']; ?></td>
@@ -101,16 +102,19 @@ include 'conn.php';
           </tbody>
       </table>
     </div>
-    <?php } ?>
+    <?php }
+    $result->closeCursor();
+    ?>
 
     <div class="table-responsive"style="text-align:center;align:center">
         <?php
         $sql1 = "SELECT * FROM pages";
-        $result1 = mysqli_query($conn, $sql1) or die("Query Failed.");
+        $result1 = $db->prepare($sql);
+        $result1->execute();
 
-        if(mysqli_num_rows($result1) > 0){
+        if($result1->rowCount() > 0){
 
-          $total_records = mysqli_num_rows($result1);
+          $total_records = $result1->rowCount();
 
           $total_page = ceil($total_records / $limit);
 
@@ -150,7 +154,7 @@ include 'conn.php';
          </div>
        </form>
    <?php }
-
+$result1->closeCursor();
     ?>
 </body>
 </html>

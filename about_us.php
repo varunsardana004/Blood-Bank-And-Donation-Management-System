@@ -29,11 +29,12 @@ include('head.php');
     <div class="col-lg-6">
         <h1 class="mt-4 mb-3">About Us</h1>
         <p> <?php
-          include 'conn.php';
-          $sql=$sql= "select * from pages where page_type='aboutus'";
-          $result=mysqli_query($conn,$sql);
-          if(mysqli_num_rows($result)>0)   {
-              while($row = mysqli_fetch_assoc($result)) {
+          require_once 'conn.php';
+          $sql = "SELECT * FROM pages WHERE page_type='aboutus'";
+          $stmt = $db->prepare($sql);
+          $stmt->execute();
+          if($stmt->rowCount() > 0)   {
+              while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo $row['page_data'];
               }
             }

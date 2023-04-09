@@ -23,7 +23,7 @@
 </style>
 </head>
 <?php
-include 'conn.php';
+require_once '../conn.php';
   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   ?>
 <body style="color:black">
@@ -99,23 +99,25 @@ include 'sidebar.php'; ?>
 
 if(isset($_POST["submit"])){
   $username=$_SESSION['username'];
-  $password=mysqli_real_escape_string($conn,$_POST["currpassword"]);
-  $sql="select * from admin_info where admin_username='$username'";
-  $result=mysqli_query($conn,$sql) or die("query failed.");
-  if(mysqli_num_rows($result)>0)
+  $password=$db->quote($_POST["currpassword"]);
+  $sql="SELECT * FROM admin_info WHERE admin_username='$username'";
+  $stmt= $db->prepare($sql);
+  $stmt->execute();
+  if($stmt->rowCount() > 0)
   {
-    while($row=mysqli_fetch_assoc($result)){
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       if($password==$row['admin_password']){
 
-    $newpassword=mysqli_real_escape_string($conn,$_POST["newpassword"]);
-    $confpassword=mysqli_real_escape_string($conn,$_POST["confirmpassword"]);
+    $newpassword=$db->quote($_POST["newpassword"]);
+    $confpassword=$db->quote($_POST["confirmpassword"]);
 
     if($newpassword==$confpassword)
     {
       if($newpassword!=$password)
       {
-      $sql1="UPDATE admin_info set admin_password='{$newpassword}' where admin_username='{$username}'";
-      $result1=mysqli_query($conn,$sql1) or die("query failed.");
+      $sql1="UPDATE admin_info SET admin_password='{$newpassword}' WHERE admin_username='{$username}'";
+      $result= $db->prepare($sql1);
+      $result->execute();
       echo '<div class="alert alert-success alert_dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button><b> Password Changed Successfully.</b></div>';
       }
       else {

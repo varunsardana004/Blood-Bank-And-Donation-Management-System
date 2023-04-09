@@ -31,7 +31,7 @@
 <body style="color:black;" >
 
   <?php
-  include 'conn.php';
+  require_once '../conn.php';
     include 'session.php';
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
@@ -64,9 +64,10 @@ include 'sidebar.php'; ?>
                 <div class="panel-body panel-info bk-primary text-light" style="background-color:#D6EAF8; border-radius:50px">
                   <div class="stat-panel text-center">
                     <?php
-                      $sql =" SELECT * from donor_details ";
-                      $result=mysqli_query($conn,$sql) or die("query failed.");
-                      $row=mysqli_num_rows($result);
+                      $sql =" SELECT * FROM donor_details ";
+                      $stmt = $db->prepare($sql);
+                      $stmt->execute();
+                      $row= $stmt->rowCount();
 
                     ?>
 
@@ -90,9 +91,10 @@ include 'sidebar.php'; ?>
                 <div class="panel-body panel-info bk-primary text-light" style="background-color:#ABEBC6;border-radius:50px;">
                   <div class="stat-panel text-center">
                     <?php
-                      $sql1 =" SELECT * from contact_query ";
-                      $result1=mysqli_query($conn,$sql1) or die("query failed.");
-                      $row1=mysqli_num_rows($result1);
+                      $sql1 ="SELECT * FROM contact_query";
+                      $result = $db->prepare($sql);
+                      $result->execute();
+                      $row1= $result->rowCount();
 
                     ?>
 
@@ -114,9 +116,10 @@ include 'sidebar.php'; ?>
                 <div class="panel-body panel-info bk-primary text-light" style="background-color:#E8DAEF ;border-radius:50px; ">
                   <div class="stat-panel text-center">
                     <?php
-                      $sql2 ="SELECT * from contact_query where query_status=2 ";
-                      $result2=mysqli_query($conn,$sql2) or die("query failed.");
-                      $row2=mysqli_num_rows($result2);
+                      $sql2 ="SELECT * FROM contact_query WHERE query_status=2";
+                      $result1 = $db->prepare($sql);
+                      $result1->execute();
+                      $row2= $result->rowCount();
 
                     ?>
 

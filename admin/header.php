@@ -52,12 +52,14 @@
 
       <li class="dropdown"><a class="dropdown-toggle" id="qw" data-toggle="dropdown" href="#" style="font-weight:bold;color:white "> <span class="glyphicon glyphicon-user"></span>&nbsp&nbsp
         <?php
-        include 'conn.php';
+        require_once '../conn.php';
         $username=$_SESSION['username'];
-        $sql="select * from admin_info where admin_username='$username'";
-        $result=mysqli_query($conn,$sql) or die("query failed.");
-        $row=mysqli_fetch_assoc($result);
+        $sql="SELECT * FROM admin_info WHERE admin_username=$username";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $row= $stmt->rowCount();
         echo "Hello ".$row['admin_name'];
+        $stmt->closeCursor();
        ?><span class="caret"></span></a>
         <ul class="dropdown-menu" style="background-color:#D6EAF8;">
           <li><a href="change_password.php" style="color:#DC7633  ">Change Password </a></li>

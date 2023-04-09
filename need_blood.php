@@ -33,13 +33,16 @@
   <div><select name="blood" class="form-control" required>
     <option value=""selected disabled>Select</option>
     <?php
-      include 'conn.php';
-      $sql= "select * from blood";
-      $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
-    while($row=mysqli_fetch_assoc($result)){
+      require_once 'conn.php';
+      $sql= "SELECT * FROM blood";
+      $stmt = $db->prepare($sql);
+       $stmt->execute();
+    while($row= $stmt->fetch(PDO::FETCH_ASSOC)){
      ?>
      <option value=" <?php echo $row['blood_id'] ?>"> <?php echo $row['blood_group'] ?> </option>
-    <?php } ?>
+    <?php }
+    $stmt->closeCursor();
+    ?>
 </select>
 </div>
 </div>
@@ -57,10 +60,11 @@
 <?php if(isset($_POST['search'])){
 
   $bg=$_POST['blood'];
-  $sql= "select * from donor_details join blood where donor_details.donor_blood=blood.blood_id AND donor_blood='{$bg}' order by rand() limit 5";
-  $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
-    if(mysqli_num_rows($result)>0)   {
-    while($row = mysqli_fetch_assoc($result)) {
+  $sql= "SELECT * FROM donor_details JOIN blood WHERE donor_details.donor_blood=blood.blood_id AND donor_blood='{$bg}' ORDER BY rand() LIMIT 5";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    if($stmt->rowCount() > 0)   {
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       ?>
 
       <div class="col-lg-4 col-sm-6 portfolio-item" ><br>
@@ -82,6 +86,7 @@
 
   <?php
     }
+    $stmt->closeCursor();
   }
     else
     {

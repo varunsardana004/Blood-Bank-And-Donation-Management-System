@@ -58,7 +58,7 @@
 <body style="color:black">
 
   <?php
-  include 'conn.php';
+  include '../conn.php';
     include 'session.php';
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
@@ -94,7 +94,7 @@ include 'sidebar.php'; ?>
                 <div class="form-group">
                   <label class="col-sm-4 control-label">Selected Page : </label>
                     <?php
-                    include 'conn.php';
+                    include '../conn.php';
               switch($_GET['type'])
               {
                     case "aboutus" :
@@ -158,9 +158,9 @@ include 'sidebar.php'; ?>
     {
       $type=$_GET['type'];
       $data=$_POST['data'];
-      $conn=mysqli_connect("localhost","root","","blood_donation") or die("Connection error");
       $sql= "update pages set page_data='{$data}'where page_type='{$type}'";
-      $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
+      $result= $db->prepare($sql);
+      $result->execute();
     echo '<div class="alert alert-success"><b>Page Data Updated Successfully.</b></div>';
     }
 

@@ -16,7 +16,7 @@
 </head>
 <body>
   <div id="footer" >
-  <b><center>COPYRIGHT © 2020<br>
+  <b><center>COPYRIGHT © <?php echo date("Y") ?><br>
   Blood Bank & Donation Management
   <br>
   ALL RIGHTS RESERVED.

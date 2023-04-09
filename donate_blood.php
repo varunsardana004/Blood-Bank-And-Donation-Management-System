@@ -58,13 +58,16 @@ $active ='donate';
 <div><select name="blood" class="form-control" required>
   <option value=""selected disabled>Select</option>
   <?php
-    include 'conn.php';
-    $sql= "select * from blood";
-    $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
-  while($row=mysqli_fetch_assoc($result)){
+    require_once 'conn.php';
+    $sql = "SELECT * FROM blood";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_ASSOC))){
    ?>
    <option value=" <?php echo $row['blood_id'] ?>"> <?php echo $row['blood_group'] ?> </option>
-  <?php } ?>
+  <?php }
+  $stmt->closeCursor();
+  ?>
 </select>
 </div>
 </div>
