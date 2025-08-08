@@ -55,7 +55,7 @@ include('head.php'); ?>
     </a>
   </div>
 <br>
-        <h1 style="text-align:center;font-size:45px;">Welcome to BloodBank & Donor Management System</h1>
+        <h1 style="text-align:center;font-size:45px;">Welcome to HEMOHELP</h1>
 <br>
         <div class="row">
             <div class="col-lg-4 mb-4">
